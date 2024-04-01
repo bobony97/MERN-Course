@@ -33,7 +33,6 @@ console.log(nombre, clave, edad);
 // }
 
 // retornaPersona( persona );
-
 const useContext = ( {clave, nombre, edad, rango} ) => {
     return {
         nombreClave: clave,
