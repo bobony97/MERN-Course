@@ -4,7 +4,7 @@ import { heroes } from "./data/06-heroes";
 // import { heroes, owners } from "./data/06-heroes";  //Varias importaciones
 
 //Trae un Heroe por id
-const getHeroeById = (id) => {
+export const getHeroeById = (id) => {
     return  heroes.find(heroe => heroe.id === id) };
     
 console.log( getHeroeById(2) );
