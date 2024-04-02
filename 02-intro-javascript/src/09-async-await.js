@@ -22,3 +22,5 @@ const getImages = async() => {
     }
 }
 
+getImages();
+
