@@ -11,6 +11,6 @@ test(`Esta prueba no debe fallar`, () => {
 
     //3.Observar el comportamiento...esperado
     //expect( message1 ).toBe( message2 );
-    expect(message1).toBe(message2);
+    expect(message1).toBe(message2);   //En expect(message1) colocamos lo que espera, y en toBe(message2) lo que esperamos que devuelva
     
 })
