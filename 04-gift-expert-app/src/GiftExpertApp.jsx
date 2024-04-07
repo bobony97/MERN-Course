@@ -34,7 +34,7 @@ export const GiftExpertApp = () => {
 
   //Evitar usar push en los array porque afecta la mutabilidad y eso es algo que en react se tiene que evitar
   const onAddCategory = ( newCategory ) => {
-    console.log(newCategory)
+    if(categories.includes(newCategory)) return; //Valida que en el array no haya datos repetidos
     // categories.push(newCategory);
     setCategories([...categories, newCategory]);
     // setCategories( cat => [...cat, `Valorant`] ); 
