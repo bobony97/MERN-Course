@@ -8,6 +8,9 @@ export const GiftGrid = ({category}) => {
   return (
     <>
         <h3>{category}</h3>
+        {
+          isLoading && (<h2>Cargando...</h2>)  //Retorna un mensaje si el "isLoading esta en false"
+        }
         <div className="card-grid">
           {
             images.map(img => (
