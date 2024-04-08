@@ -1,19 +1,9 @@
-import { getGifs } from "../helpers/getGifs";
-import { useEffect, useState } from "react";
+import { useFetchGift } from "../hooks/useFetchGift";
 import { GiftItem } from "./GiftItem";
 
 export const GiftGrid = ({category}) => {
 
-  const [images, setImages] = useState([]);
-
-  const getImages = async() => {
-    const newImages = await getGifs(category);
-    setImages(newImages);
-  }
-
-  useEffect( () =>  {
-    getImages();  //Indicamos el codigo que queremos ejecutar
-  }, [])
+  const { images, isLoading } = useFetchGift( category );
 
   return (
     <>
