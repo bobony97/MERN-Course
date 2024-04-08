@@ -30,7 +30,7 @@ import { GiftGrid } from "./components/GiftGrid";
 //Forma 2 (correcta de hacer el componente)
 
 export const GiftExpertApp = () => {
-  const [categories, setCategories] = useState([`One Punch`, `Dragon Ball`]);
+  const [categories, setCategories] = useState([`One Punch`]);
 
   //Evitar usar push en los array porque afecta la mutabilidad y eso es algo que en react se tiene que evitar
   const onAddCategory = (newCategory) => {
