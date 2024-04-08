@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { AddCategory } from "./components/AddCategory";
-import { GiftGrid } from "./components/GiftGrid";
+import { AddCategory, GiftGrid } from "./components";
+
 
 //Forma 1
 
