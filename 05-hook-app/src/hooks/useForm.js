@@ -12,9 +12,14 @@ export const useForm = ( initialForm = {} ) => {
     });
   };
 
+  const onResetForm = () => {
+    setFormState( initialForm )
+  }
+
   return {
     ...formState,   //Enviamos el "formState" con su estado actual para luego ser desestructurado al inicializar el estado
     formState,
-    onInputChange
+    onInputChange,
+    onResetForm,
   };
 };

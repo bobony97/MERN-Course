@@ -5,7 +5,7 @@ export const FormWithCustomHook = () => {
 
   //Aca llamamos al custom hook "useForm", con sus propiedades desestructuradas "formState", "onInputChange" y las propiedades "username", "password", e "email", son extraidas
   //del objeto con el que inicializamos el "useForm"
-  const { formState, onInputChange, username, email, password } = useForm({ 
+  const { formState, onInputChange, onResetForm, username, email, password } = useForm({ 
     username: "",
     email: "",
     password: "",
@@ -44,6 +44,8 @@ export const FormWithCustomHook = () => {
         value={password}
         onChange={onInputChange}
       />
+
+      <button onClick={ onResetForm } className="btn btn-primary mt-2">Borrar</button>
     </>
   );
 };
