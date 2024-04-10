@@ -14,14 +14,15 @@ export const Message = () => {
         }
 
 
-      window.addEventListener(`mousemove`, onMouseMove)  //Llamamos al listener que escucha el movimiento del mouse y a la funcion anterior
+        window.addEventListener(`mousemove`, onMouseMove)  //Llamamos al listener que escucha el movimiento del mouse y a la funcion anterior
     
-      return () => {   //El return es utilizado para limpiar los efectos generados por el "useEffect" en si. Esta funcion de limpieza se ejecuta cantes de que el componente se desmonte, antes de ser
+        return () => {   //El return es utilizado para limpiar los efectos generados por el "useEffect" en si. Esta funcion de limpieza se ejecuta cantes de que el componente se desmonte, antes de ser
                        //eliminado del DOM
-        window.removeEventListener(`mousemove`, onMouseMove) //Este es el efecto secundario que vamos a limpiar antes de desmontar el componente. En este caso elimina el "listener" llamado
-                                                            //anteriormente
-      }
-    }, [])  //El [] indica que este efecto no tiene dependencias, lo que significa que el efecto se ejecutará solo una vez, cuando el componente se monte por primera vez, y se limpiará 
+            window.removeEventListener(`mousemove`, onMouseMove) //Este es el efecto secundario que vamos a limpiar antes de desmontar el componente. En este caso elimina el "listener" llamado
+                                                         //anteriormente
+        }
+        
+    },[])  //El [] indica que este efecto no tiene dependencias, lo que significa que el efecto se ejecutará solo una vez, cuando el componente se monte por primera vez, y se limpiará 
             //cuando el componente se desmonte.
     
 
