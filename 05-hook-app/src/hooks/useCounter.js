@@ -1,5 +1,7 @@
 import { useState } from "react"
 
+
+//HOOK QUE SIMULA UN CARRITO DE COMPRAS
 export const useCounter = ( initialValue = 10 ) => {  //La persona envia el valor inicial por el argumento, caso contrario este valor sera de "10"
 
     const [counter, setCounter] = useState(initialValue);
