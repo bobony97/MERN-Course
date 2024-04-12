@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-const localCache = {
+const localCache = {   //Creacion del objeto cache donde vamos a almacenar las referencias que trae el fetch 
 
 };
 
@@ -30,17 +30,21 @@ export const useFetch = ( url ) => {
 
     const getFetch = async() => {
 
-        if( localCache[url] ) {
-            console.log("Usando cache");
+        /*
+            En la función useFetch, antes de hacer la solicitud fetch al servidor, se verifica si la URL ya existe en el localCache. Si existe, significa que ya se ha hecho una solicitud previa 
+            a esa URL y la respuesta está almacenada en el cache. En ese caso, se utiliza la respuesta almacenada en lugar de hacer una nueva solicitud.
+        */
+
+        if( localCache[url] ) {    // Verificar si la URL está en el cache
             setState({
-                data: localCache[url],
+                data: localCache[url],  // Utilizar la respuesta del cache
                 isLoading: false,
                 hasError: false,
                 error: null
             });
-
             return;
         }
+        // Si la URL no está en el cache, hacer la solicitud fetch
 
         setLoadingState();
 
@@ -74,7 +78,7 @@ export const useFetch = ( url ) => {
 
         //Manejo del cache
 
-        localCache[ url ] = data;
+        localCache[ url ] = data;  // Guardar la respuesta en el cache
     }
     
 
