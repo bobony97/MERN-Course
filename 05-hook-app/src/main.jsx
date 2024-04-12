@@ -9,7 +9,8 @@ import './index.css'
 // import { MultipleCustomHooks } from './03-examples/MultipleCustomHooks'
 // import { FocusScreen } from './04-useRef/FocusScreen'
 // import { Memorize } from './05-memos/Memorize'
-import { MemoHook } from './05-memos/MemoHook'
+// import { MemoHook } from './05-memos/MemoHook'
+import { CallBackHook } from './05-memos/CallBackHook'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
@@ -21,6 +22,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     // <MultipleCustomHooks />
     // <FocusScreen />
     // <Memorize />
-    <MemoHook />
+    // <MemoHook />
+    <CallBackHook />
   // </React.StrictMode>,
 )
