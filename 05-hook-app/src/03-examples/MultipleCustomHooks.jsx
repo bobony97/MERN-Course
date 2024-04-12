@@ -24,7 +24,7 @@ export const MultipleCustomHooks = () => {
                 data.sprites.front_shiny,
                 data.sprites.back_default,
                 data.sprites.back_shiny
-               ] }
+               ] }  
                /> 
             )
         }
