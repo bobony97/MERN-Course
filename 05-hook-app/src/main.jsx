@@ -11,7 +11,10 @@ import './index.css'
 // import { Memorize } from './05-memos/Memorize'
 // import { MemoHook } from './05-memos/MemoHook'
 // import { CallBackHook } from './05-memos/CallBackHook'
-import { Padre } from './06-ejercicio/Padre'
+// import { Padre } from './06-ejercicio/Padre'
+// import "./08-useReducer/intro-reducer";
+import { TodoApp } from './08-useReducer/TodoApp';
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
@@ -25,6 +28,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     // <Memorize />
     // <MemoHook />
     // <CallBackHook />
-    <Padre />
+    // <Padre />
+    <TodoApp />
   // </React.StrictMode>,
 )

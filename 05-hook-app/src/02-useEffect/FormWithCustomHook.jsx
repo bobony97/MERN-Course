@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useForm } from "../hooks/useForm";
 
 export const FormWithCustomHook = () => {
@@ -10,9 +9,6 @@ export const FormWithCustomHook = () => {
     email: "",
     password: "",
   });
-
-  // const {username, email, password} = formState;
-
 
   return (
     <>
