@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from "react";
-import { todoReducer } from "../08-useReducer/todoReducer";
+import { todoReducer } from "../07-useReducer/todoReducer";
 
     /*
     El parámetro init en useReducer es opcional y se refiere a una función que se utiliza para inicializar el estado del reducer la primera vez que se llama. Si no se proporciona, el estado inicial 
