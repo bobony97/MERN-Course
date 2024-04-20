@@ -3,10 +3,13 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 export const Navbar = (props) => {
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate(); //permite navegar programáticamente entre rutas de la  aplicación 
 
     const onLogout = () => {
-        console.log(props)
+        navigate(`/login`, {
+            replace: true,    //permite realizar una navegación reemplazando la entrada actual del historial de navegación, en lugar de agregar una nueva entrada. (Evita que pueda regresar a la pag anterior)
+
+        });
     }
 
     return (
