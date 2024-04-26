@@ -23,7 +23,7 @@ export const SearchPage = () => {
 
   const onSearchSubmit = (event) => {
     event.preventDefault(); 
-    navigate(`?q=${ searchText }`);           //Esto invia la query o el texto ingresado al input del formulario directo a la url
+    navigate(`?q=${ searchText }`); //Esto invia la query o el texto ingresado al input del formulario directo a la url
   }
 
   return (
