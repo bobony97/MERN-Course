@@ -47,5 +47,89 @@ DOCU{
     *variant='h1': El prop variant se utiliza para especificar el estilo tipográfico que deseas aplicar al texto. En este caso, estás usando 'h1' como valor de variant, 
     -lo que indica que quieres que el texto se muestre como un encabezado de nivel 1 (h1).
 
-    
+    COMPONENTES:
+    <Grid></Grid>: Es un componente de diseño que facilita la creación de diseños flexibles y responsivos utilizando una estructura de cuadrícula
+
+
+    PROPIEDADES:
+
+    Propiedades de cajas:
+        backgroundColor: Color de fondo de la caja.
+        color: Color del texto dentro de la caja.
+        border: Propiedades del borde de la caja.
+            borderWidth: Ancho del borde.
+            borderColor: Color del borde.
+            borderStyle: Estilo del borde (por ejemplo, "solid", "dashed", "dotted").
+            borderRadius: Radio de borde para esquinas redondeadas de la caja.
+        boxShadow: Sombra aplicada a la caja.
+        padding: Espacio interior de la caja.
+            paddingTop: Espacio interior en la parte superior.
+            paddingRight: Espacio interior en la parte derecha.
+            paddingBottom: Espacio interior en la parte inferior.
+            paddingLeft: Espacio interior en la parte izquierda.
+        margin: Margen exterior de la caja.
+            marginTop: Margen en la parte superior.
+            marginRight: Margen en la parte derecha.
+            marginBottom: Margen en la parte inferior.
+            marginLeft: Margen en la parte izquierda.
+        width: Ancho de la caja.
+        height: Altura de la caja.
+        display: Tipo de visualización de la caja (por ejemplo, "block", "inline-block", "flex").
+
+
+    Propiedades generales:
+        sx: Para aplicar estilos personalizados en línea al componente. Ej sx={{ minWidth: '100vh', padding: 4 }}
+        className: Para asignar clases CSS adicionales al componente.
+        id: Para establecer un identificador único para el componente.
+        style: Para aplicar estilos directamente al componente.
+
+    Propiedades de diseño:
+        alignItems: Alineación de elementos secundarios en un contenedor.
+        justifyContent: Alineación de elementos secundarios a lo largo del eje principal de un contenedor.
+        spacing: Espaciado entre elementos en un contenedor <Grid>.
+        direction: Dirección de los elementos hijos en un contenedor <Grid> (por ejemplo, "row", "column").
+        flex: Propiedades flexibles para el diseño (por ejemplo, flexGrow, flexShrink, flexBasis).
+
+    Propiedades de estilo:
+        color: Color del texto o de los elementos.
+        backgroundColor: Color de fondo.
+        fontSize: Tamaño de la fuente.
+        fontWeight: Grosor de la fuente.
+        border: Propiedades del borde (por ejemplo, borderWidth, borderColor, borderStyle).
+        borderRadius: Radio de borde para esquinas redondeadas.
+        boxShadow: Sombra del componente.
+        padding: Relleno interior del componente.
+        margin: Margen exterior del componente.
+        width: Ancho del componente.
+        height: Altura del componente.
+
+    Propiedades de comportamiento:
+        disabled: Para deshabilitar la interacción con el componente.
+        onClick: Evento que se dispara al hacer clic en el componente.
+        onChange: Evento que se dispara al cambiar el valor de un componente (por ejemplo, en un campo de entrada).
+
+    Propiedades específicas de componentes:
+        label: Para definir la etiqueta de un componente como un <TextField> o <Button>.
+        variant: Para definir la variante de un componente (por ejemplo, "outlined", "contained", "text" en <Button>).
+        value: Valor de un componente (por ejemplo, en un <TextField> o <Select>).
+        defaultValue: Valor predeterminado de un componente (por ejemplo, en un <TextField> o <Select>).
+
+
+    TAMAÑOS DE PANTALLA
+    Extra pequeño (XS):
+    Dispositivos móviles pequeños como smartphones en orientación vertical.
+    Ancho típico: Menos de 600 píxeles.
+    Pequeño (SM):
+    Dispositivos móviles en orientación horizontal y tablets en orientación vertical.
+    Ancho típico: De 600 a 959 píxeles.
+    Mediano (MD):
+    Tablets en orientación horizontal y monitores de tamaño mediano.
+    Ancho típico: De 960 a 1279 píxeles.
+    Grande (LG):
+    Monitores de tamaño grande y laptops.
+    Ancho típico: De 1280 a 1919 píxeles.
+    Extra grande (XL):
+    Monitores de alta resolución y pantallas grandes.
+    Ancho típico: 1920 píxeles o más.
+
 }
