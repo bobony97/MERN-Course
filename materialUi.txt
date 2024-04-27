@@ -42,17 +42,35 @@ CONFIGURACION{
 
 
 DOCU{
+    COMPONENTES:
     *<Typography variant='h1' >JournalPage</Typography>: Es un componente versátil que permite mostrar texto con diferentes estilos, como encabezados, párrafos, texto destacado, etc. 
     -Ayuda a mantener la consistencia y el estilo en toda la aplicación.
-    *variant='h1': El prop variant se utiliza para especificar el estilo tipográfico que deseas aplicar al texto. En este caso, estás usando 'h1' como valor de variant, 
+    -variant='h1': El prop variant se utiliza para especificar el estilo tipográfico que deseas aplicar al texto. En este caso, estás usando 'h1' como valor de variant, 
     -lo que indica que quieres que el texto se muestre como un encabezado de nivel 1 (h1).
 
-    COMPONENTES:
-    <Grid></Grid>: Es un componente de diseño que facilita la creación de diseños flexibles y responsivos utilizando una estructura de cuadrícula
+    *<Grid></Grid>: Es un componente de diseño que facilita la creación de diseños flexibles y responsivos utilizando una estructura de cuadrícula
+
+    import { Link as RouterLink } from "react-router-dom";
+    import { Link } from "@mui/material";  
+    *<Link component={RouterLink} ></Link>: Permite estilizar los links, dentro de cada componente "Link" recibe una propiedad llamada "component" en donde va a recibir el componente "Link" 
+    -de react-router-dom
+
+    *<Box></Box>: Es un componente versátil que se utiliza para crear y manipular cajas o contenedores de manera flexible. 
+    Proporciona una forma conveniente de aplicar estilos y propiedades a un contenedor sin tener que usar componentes más específicos como <div> o <span>, 
+    -lo que facilita la creación de diseños y estructuras de interfaz de usuario.
+
+    *<AppBar></AppBar>: Se utiliza para crear la barra de navegación superior (también conocida como barra de aplicación) en una interfaz de usuario
+
+    *<Toolbar></Toolbar>: Se utiliza junto con <AppBar> para crear la barra de herramientas dentro de la barra de navegación. Estos actúan como un contenedor para agrupar y alinear 
+    -elementos dentro de la AppBar, como enlaces de navegación, botones, iconos, menús desplegables y otros elementos de interfaz de usuario.
+
+    *<IconButton></IconButton>: Este componente se utiliza para crear botones con iconos
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     PROPIEDADES:
-
     Propiedades de cajas:
         backgroundColor: Color de fondo de la caja.
         color: Color del texto dentro de la caja.
