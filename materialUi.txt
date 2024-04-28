@@ -66,6 +66,35 @@ DOCU{
 
     *<IconButton></IconButton>: Este componente se utiliza para crear botones con iconos
 
+    *<Drawer></Drawer>:  Es un contenedor que se utiliza para mostrar un panel lateral que se desliza desde el borde de la pantalla
+   -Panel lateral deslizable: <Drawer> crea un panel lateral que se puede deslizar desde el borde de la pantalla (izquierda, derecha o ambos) para mostrar contenido adicional.
+    -Control de apertura y cierre: Puedes controlar manualmente si el <Drawer> está abierto o cerrado mediante el uso de propiedades como open y eventos como onOpen y onClose.
+    -Estilos y personalización: <Drawer> proporciona propiedades como sx para aplicar estilos personalizados al panel lateral, como anchura, posición, color de fondo, sombras, etc.
+    -Variantes de diseño: <Drawer> tiene variantes como temporary (que se abre temporalmente), persistent (que permanece abierto) y permanent (que se muestra permanentemente).
+    -Uso con navegación: Es común utilizar <Drawer> junto con componentes de navegación como <List>, <ListItem>, <Link> para crear un menú de navegación desplegable.
+
+
+    <List>  {/*Este componente se utiliza para crear una lista de elementos en Material-UI */}
+        {
+            ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL'].map( text => (
+                <ListItem key={text} disablePadding > {/*: Cada <ListItem> representa un elemento de la lista. Se utiliza disablePadding para eliminar el relleno predeterminado 
+                                                        del ListItem y evitar el espacio adicional. */}
+                    <ListItemButton> {/*Este componente se utiliza dentro de <ListItem> para crear un botón que envuelve el contenido del ListItem. 
+                                    Proporciona comportamientos interactivos, como cambios de estilo al pasar el cursor sobre el elemento. */}
+                        <ListItemIcon>
+                            <TurnedInNot />
+                        </ListItemIcon>
+                        <Grid container>
+                            <ListItemText primary={ text } /> {/*Este componente se utiliza para mostrar texto dentro del ListItem. El primary prop se utiliza para mostrar el texto principal, 
+                            que en este caso son los nombres de los meses, y el secondary prop se utiliza para mostrar texto secundario, que en este caso es una descripción breve. */}
+                            <ListItemText secondary={ 'Sint irure ea ipsum commodo amet sit' } />
+                        </Grid>
+                    </ListItemButton>
+                </ListItem>
+            ))
+        }
+    </List>  
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
