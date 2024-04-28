@@ -1,13 +1,13 @@
 import { AppBar, Grid, IconButton, Toolbar, Typography } from '@mui/material'
 import { LogoutOutlined, MenuOutlined } from '@mui/icons-material'
 
-export const Navbar = ({ drawnerWidth = 240 }) => {
+export const Navbar = ({ drawerWidth = 240 }) => {
   return (
     <AppBar //se utiliza para crear la barra de navegación superior (también conocida como barra de aplicación) en una interfaz de usuario
         position='fixed'
         sx={{ 
-            width: {sm: `calc(100% - ${ drawnerWidth }px)`},
-            ml: { sm: `${ drawnerWidth }px` }
+            width: {sm: `calc(100% - ${ drawerWidth }px)`},
+            ml: { sm: `${ drawerWidth }px` }
         }}
     >
         <Toolbar>
