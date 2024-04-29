@@ -1,25 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useDispatch, useSelector } from 'react-redux'
+import { increment, decrement, incrementBy2 } from './store/slices/counter/counterSlice';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  //"useSelector" es un hook de React Redux que permite seleccionar parte del estado del store de Redux y asignarlo a una variable local en un componente funcional de React.
+  const { counter } = useSelector( state => state.counter ); //state => state.counter: Esto es una función que toma el estado global de Redux (state) y devuelve la parte del estado que deseas 
+                                                            //seleccionar, en este caso, state.counter, en donde el "counter" esta asignado en el store.
+                                                        
+  //"useDispatch" es otro hook de React Redux que permite obtener la función dispatch, que se utiliza para enviar acciones al store de Redux.
+  const dispatch = useDispatch(); 
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <p> Count is: { counter } </p>
+        <button onClick={() => { dispatch( increment() ) }}>  {/*Aca el "dispatch" esta disparando la accion "increment" definida en el reducer */}
+          Increment 
+        </button>
+        <button onClick={() => { dispatch( decrement() ) }}>  
+          Decrement 
+        </button>
+        <button onClick={() => { dispatch( incrementBy2(2) ) }}>  
+          increment By 2 
         </button>
       </div>
     </>
