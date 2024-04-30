@@ -3,7 +3,7 @@
     signInWithPopup: Importa la función signInWithPopup de Firebase Authentication para abrir un popup de autenticación de Google.
     FirebaseAuth: Importa el objeto FirebaseAuth desde un archivo de configuración ("./config").
 */
-import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
 import { FirebaseAuth } from "./config";
 
 //Creación del proveedor de Google: Se crea una instancia de GoogleAuthProvider y se asigna a la variable googleProvider.
@@ -56,7 +56,21 @@ export const registerUserWithEmailPassword = async({ email, password, displayNam
             uid, photoURL, email, displayName
         }
     } catch (error) {
-        console.log(error)
         return { ok: false, errorMessage: error.message }
     }
+}
+
+export const loginWithEmailAndPassword = async({ email, password }) => {
+    try {
+        const resp = await signInWithEmailAndPassword(FirebaseAuth, email, password); //Esta funcion permite loguearse en firebase con email y contraseña
+        const { uid, photoURL, displayName } = resp.user;
+        return {
+            ok: true,
+            uid, photoURL, email, displayName
+        }
+    } catch (error) {
+        return { ok: false, errorMessage: error.message }
+    }
+
+
 }

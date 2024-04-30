@@ -34,9 +34,7 @@ export const RegisterPage = () => {
     event.preventDefault();
     setFormSubmitted(true);
     if(!isFormValid) return true;
-    console.log("Resiger page: " + JSON.stringify(formState))
     dispatch(startCreatingUserWithEmailPassword(formState));
-    
   }
 
 
