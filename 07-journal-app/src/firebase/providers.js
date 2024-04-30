@@ -3,7 +3,7 @@
     signInWithPopup: Importa la función signInWithPopup de Firebase Authentication para abrir un popup de autenticación de Google.
     FirebaseAuth: Importa el objeto FirebaseAuth desde un archivo de configuración ("./config").
 */
-import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
 import { FirebaseAuth } from "./config";
 
 //Creación del proveedor de Google: Se crea una instancia de GoogleAuthProvider y se asigna a la variable googleProvider.
@@ -42,7 +42,15 @@ export const singInWithGoogle = async() => {
 
 export const registerUserWithEmailPassword = async({ email, password, displayName }) => {
     try {
-        const resp = await createUserWithEmailAndPassword(FirebaseAuth, email, password);
+        const resp = await createUserWithEmailAndPassword(FirebaseAuth, email, password); //Funcion de firebase para crear usuarios con email y password
+        const { uid, photoURL} = resp.user;
+        /*
+            updateProfile es un método que pertenece al objeto User de Firebase Authentication.
+            Se utiliza para actualizar los detalles del perfil del usuario, como el nombre de usuario, la foto de perfil, etc.
+            FirebaseAuth es el objeto que representa la instancia de autenticación en Firebase.
+            currentUser es una propiedad de FirebaseAuth que devuelve el usuario actualmente autenticado en la sesión de Firebase.
+        */
+        await updateProfile( FirebaseAuth.currentUser, { displayName });
         return {
             ok: true,
             uid, photoURL, email, displayName
