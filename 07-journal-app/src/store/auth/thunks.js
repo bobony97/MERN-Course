@@ -1,3 +1,4 @@
+import { FirebaseAuth } from "../../firebase/config";
 import { loginWithEmailAndPassword, registerUserWithEmailPassword, singInWithGoogle } from "../../firebase/providers";
 import { checkingCredentials, login, logout } from "./authSlice";
 
@@ -37,5 +38,13 @@ export const startLoginWithEmailPassword = ({ email, password }) => {
         if( !result.ok ) return dispatch( logout( result) )
 
         dispatch( login( result ) )
+    }
+}
+
+export const startLogout = () => {
+    return async (dispatch) => {
+        await FirebaseAuth.signOut();
+
+        dispatch(logout({ errorMessage: null }));
     }
 }

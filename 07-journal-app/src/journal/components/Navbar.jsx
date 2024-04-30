@@ -1,7 +1,16 @@
 import { AppBar, Grid, IconButton, Toolbar, Typography } from '@mui/material'
 import { LogoutOutlined, MenuOutlined } from '@mui/icons-material'
+import { useDispatch, useSelector } from 'react-redux'
+import { startLogout } from '../../store/auth/thunks';
 
 export const Navbar = ({ drawerWidth = 240 }) => {
+
+    const dispatch = useDispatch();
+
+    const onLogout = () => {
+        dispatch( startLogout() )
+    }
+
   return (
     <AppBar //se utiliza para crear la barra de navegación superior (también conocida como barra de aplicación) en una interfaz de usuario
         position='fixed'
@@ -22,7 +31,10 @@ export const Navbar = ({ drawerWidth = 240 }) => {
             <Grid container direction='row' justifyContent='space-between' alignItems='center'>
                 <Typography variant='h6' noWrap component='div'  > Journal App </Typography>
 
-                <IconButton color='error'>
+                <IconButton 
+                    color='error'
+                    onClick={ onLogout }
+                >
                     <LogoutOutlined />
                 </IconButton>
             </Grid>
