@@ -3,7 +3,8 @@ import { Grid, Typography } from "@mui/material";
 //Este layout lo vamos a utilizar para reemplazar parte del formulario de login y registro y ahorrar codigo
 export const AuthLayout = ({ children, title = "" }) => {
   return (
-    <Grid //Es un componente de diseño que facilita la creación de diseños flexibles y responsivos utilizando una estructura de cuadrícula
+    <Grid  //Es un componente de diseño que facilita la creación de diseños flexibles y responsivos utilizando una estructura de cuadrícula
+      
       container //Indica que este componente es un contenedor Grid.
       spacing={0} //Define el espaciado entre los elementos hijos del Grid. En este caso cero píxeles.
       direction="column" //Configura la dirección de los elementos hijos como "columna"

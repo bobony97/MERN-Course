@@ -40,7 +40,7 @@ export const RegisterPage = () => {
 
   return (
     <AuthLayout title="Crear Cuenta">  {/*Se coloca el layout que reemplaza la una parte de la pagina de registro y login y se le pasa la prop title para distinguir entre el login y registro  */}
-      <form onSubmit={ onSubmit } >
+      <form onSubmit={ onSubmit } className="animate__animated animate__fadeIn animate__faster" >
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField

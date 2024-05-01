@@ -40,6 +40,7 @@ export const singInWithGoogle = async() => {
     }
 }
 
+
 export const registerUserWithEmailPassword = async({ email, password, displayName }) => {
     try {
         const resp = await createUserWithEmailAndPassword(FirebaseAuth, email, password); //Funcion de firebase para crear usuarios con email y password
