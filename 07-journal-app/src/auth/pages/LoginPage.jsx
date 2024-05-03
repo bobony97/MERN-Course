@@ -7,15 +7,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { startLoginWithEmailPassword, startGoogleSingIn } from "../../store/auth/thunks";
 import { useMemo } from "react";
 
+const formData = {
+  email: '',
+  password: ''
+}
 
 export const LoginPage = () => {
 
   const { status, errorMessage } = useSelector(state => state.auth)
 
-  const { email, password, onInputChange } = useForm({
-    email: '',
-    password: ''
-  })
+  const { email, password, onInputChange } = useForm(formData);
 
   const dispatch = useDispatch();
 

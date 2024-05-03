@@ -1,6 +1,6 @@
 import { collection, doc, setDoc } from "firebase/firestore/lite";
 import { FirebaseDB } from "../../../firebase/config";
-import { addNewEmptyNote, setActiveNote, savingNewNote, setNotes } from "./journalSlice";
+import { addNewEmptyNote, setActiveNote, savingNewNote, setNotes, setSaving, updateNote } from "./journalSlice";
 import { loadNotes } from "../../../helpers/loadNotes";
 
 export const startNewNote = () => {
@@ -56,5 +56,26 @@ export const startLoadingNotes = () => {
 
         const notes = await loadNotes(uid);
         dispatch(setNotes(notes));
+    }
+}
+
+export const startSaveNote = () => {
+    return async(dispatch, getState) => {
+
+        dispatch( setSaving() );
+
+        const { uid } = getState().auth;
+        const { active:note } = getState().journal;
+
+        const noteToFirestore = { ...note };
+        delete noteToFirestore.id;
+
+        const docRef = doc(FirebaseDB, `${ uid }/journal/notas/${ note.id }`);
+
+        //Cuando se especifica merge: true, la función setDoc fusionará los nuevos datos proporcionados con los datos existentes en el documento, manteniendo los campos y valores que no se 
+        //especifican en los nuevos datos.
+        await setDoc( docRef, noteToFirestore, { merge: true }); 
+
+        dispatch( updateNote(note) );
     }
 }
