@@ -1,9 +1,9 @@
-import { SaveOutlined } from '@mui/icons-material'
-import { Button, Grid, TextField, Typography } from '@mui/material'
+import { SaveOutlined, UploadOutlined } from '@mui/icons-material'
+import { Button, Grid, IconButton, TextField, Typography } from '@mui/material'
 import { ImageGallery } from '../journal/components/ImageGallery'
 import { useForm } from '../hooks/useForm'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { setActiveNote } from '../store/auth/journal/journalSlice'
 import { startSaveNote } from '../store/auth/journal/thunks'
 import  Swal  from 'sweetalert2';
@@ -22,6 +22,8 @@ export const NoteView = () => {
         return newDate.toUTCString();
     },[date])
 
+    const fileInputRef = useRef() //Este "useRef" va a tener la referencia del input de archivos
+
     useEffect(() => {
         dispatch( setActiveNote(formState) )
     }, [formState])
@@ -36,12 +38,36 @@ export const NoteView = () => {
         dispatch( startSaveNote() )
     }
 
+    //Esta funcion va a enviar los archivos a clodinary
+    const onFileInputChange = ({ target }) => { //Desestructura el "event" y obtengo el "target"
+        if(target.files === 0) return;   //Si no se seleccionó ningún archivo entonces no va a retornar nada y se corta la función
+
+        // dispatch( startUploadingFiles( target.files ) ); 
+    }
+
   return (
     <Grid container direction={'row'} justifyContent={'space-between'} alignItems={'center'} sx={{ mb: 1 }} className="animate__animated animate__fadeIn animate__faster">
         <Grid item>
             <Typography fontSize={39} fontWeight={'light'} > { dateString } </Typography>
         </Grid>
         <Grid item>
+
+            <input 
+                type='file'
+                multiple
+                onChange={ onFileInputChange }
+                style={{ display: 'none' }}
+                ref={ fileInputRef } //Se establece la referencia
+            />
+
+            <IconButton
+                color='primary'
+                disabled={isSaving}
+                onClick={ () => fileInputRef.current.click() } //Aca obtenemos la referencia al hacer click
+            >
+                <UploadOutlined />
+            </IconButton>
+
             <Button color='primary' sx={{ p: 2 }} onClick={onSaveNote} disabled={isSaving} >
                 <SaveOutlined sx={{ fontSize: 30, mr: 1 }}/>
                 Guardar
