@@ -38,13 +38,14 @@ export const NoteView = () => {
         dispatch( startSaveNote() )
     }
 
-    //Esta funcion va a enviar los archivos a clodinary
+    //Esta función va a enviar los archivos a clodinary
     const onFileInputChange = ({ target }) => { //Desestructura el "event" y obtengo el "target"
         if(target.files === 0) return;   //Si no se seleccionó ningún archivo entonces no va a retornar nada y se corta la función
 
         dispatch( startUploadingFiles( target.files ) ); 
     }
 
+    console.log(note)
   return (
     <Grid container direction={'row'} justifyContent={'space-between'} alignItems={'center'} sx={{ mb: 1 }} className="animate__animated animate__fadeIn animate__faster">
         <Grid item>
@@ -98,7 +99,7 @@ export const NoteView = () => {
             />
         </Grid>
 
-        <ImageGallery />
+        <ImageGallery images={ note.imageUrls } />
 
     </Grid>
   )
