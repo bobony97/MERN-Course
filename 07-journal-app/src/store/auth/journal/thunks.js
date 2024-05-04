@@ -68,7 +68,7 @@ export const startSaveNote = () => {
         const { active:note } = getState().journal;
 
         const noteToFirestore = { ...note };
-        delete noteToFirestore.id;
+        delete noteToFirestore.id; //Elimina la propiedad "id" para no enviarla a firestore y que haga conflicto
 
         const docRef = doc(FirebaseDB, `${ uid }/journal/notas/${ note.id }`);
 
