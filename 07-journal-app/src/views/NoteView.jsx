@@ -5,7 +5,7 @@ import { useForm } from '../hooks/useForm'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useMemo, useRef } from 'react'
 import { setActiveNote } from '../store/auth/journal/journalSlice'
-import { startSaveNote } from '../store/auth/journal/thunks'
+import { startSaveNote, startUploadingFiles } from '../store/auth/journal/thunks'
 import  Swal  from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css'
 
@@ -42,7 +42,7 @@ export const NoteView = () => {
     const onFileInputChange = ({ target }) => { //Desestructura el "event" y obtengo el "target"
         if(target.files === 0) return;   //Si no se seleccionó ningún archivo entonces no va a retornar nada y se corta la función
 
-        // dispatch( startUploadingFiles( target.files ) ); 
+        dispatch( startUploadingFiles( target.files ) ); 
     }
 
   return (
