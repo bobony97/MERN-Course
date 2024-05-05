@@ -4,6 +4,7 @@ import esES from 'date-fns/locale/es'
 import { addHours, format, parse, startOfWeek, getDay } from 'date-fns'
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { getMessagesEs } from '../../helpers/getHelpers';
+import { CalendarEvent } from '../components/CalendarEvent';
 
 export const CalendarPage = () => {
 
@@ -34,7 +35,7 @@ export const CalendarPage = () => {
 
   const events = [{
     title: 'Cumpleaños del jefe',
-    notes: 'Hay que comprar el pasterl',
+    notes: 'Hay que comprar el pastel',
     start: new Date(),
     end: addHours( new Date(), 2 ),
     bgColor: 'fafafa',
@@ -44,19 +45,24 @@ export const CalendarPage = () => {
     }
   }]
 
+  const getDefaultMessages = getMessagesEs();
+
   return (
     <>
       <Navbar />
 
       <Calendar
-      culture='es'
+        culture='es'
         localizer={localizer}
         events={ events }
         startAccessor="start"
         endAccessor="end"
         style={{ height: 'calc( 100vh - 80px )' }}
-        messages={getMessagesEs()}
+        messages={getDefaultMessages}
         eventPropGetter={ eventStyleGetter }
+        components={{
+          event: CalendarEvent
+        }}
     />
     </>
   )
