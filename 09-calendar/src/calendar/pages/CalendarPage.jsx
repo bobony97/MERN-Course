@@ -6,6 +6,8 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { getMessagesEs } from '../../helpers/getHelpers';
 import { CalendarEvent } from '../components/CalendarEvent';
 import { useState } from 'react';
+import { CalendarModal } from '../components/CalendarModal';
+
 
 export const CalendarPage = () => {
 
@@ -80,7 +82,9 @@ export const CalendarPage = () => {
         onDoubleClickEvent={ onDoubleClick }
         onSelectEvent={ onSelect }
         onView={ onViewChanged }
-    />
+      />
+      <CalendarModal />
+
     </>
   )
 }
