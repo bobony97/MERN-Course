@@ -1,7 +1,7 @@
 export const fileUpload = async(file) => {
     if (!file) throw new Error('No hay archivos a subir');
 
-    const cloudUrl = `https://api.cloudinary.com/v1_1/drb54pxla/upload`;
+    const cloudUrl = `https://api.cloudinary.com/v1_1/drb54pxla/upload`; //drb54pxla: Es el "cloud name de cloudinary"
 
     /*
         Se crea un objeto FormData. FormData es una interfaz en JavaScript que permite construir fácilmente pares clave/valor para enviar datos en una solicitud HTTP, 
