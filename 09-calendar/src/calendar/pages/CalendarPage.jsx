@@ -1,18 +1,20 @@
 import { Navbar } from '../components/Navbar'
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
 import esES from 'date-fns/locale/es'
-import { addHours, format, parse, startOfWeek, getDay } from 'date-fns'
+import { format, parse, startOfWeek, getDay } from 'date-fns'
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { getMessagesEs } from '../../helpers/getHelpers';
 import { CalendarEvent } from '../components/CalendarEvent';
 import { useState } from 'react';
 import { CalendarModal } from '../components/CalendarModal';
 import { useUiStore } from '../../hooks/useUiStore';
+import { useCalendarStore } from '../../hooks/useCalendarStore';
 
 
 export const CalendarPage = () => {
 
-  const { openDateModal } = useUiStore()
+  const { openDateModal } = useUiStore();
+  const { events } = useCalendarStore();
   const [lastView, setLastView] = useState(localStorage.getItem(`lastView`) || 'week');
 
   const eventStyleGetter = ( event, start, end, isSelected ) => {
@@ -39,18 +41,6 @@ export const CalendarPage = () => {
     getDay,
     locales,
   })
-
-  const events = [{
-    title: 'Cumpleaños del jefe',
-    notes: 'Hay que comprar el pastel',
-    start: new Date(),
-    end: addHours( new Date(), 2 ),
-    bgColor: 'fafafa',
-    user: {
-      _id: '123',
-      name: 'Fernando'
-    }
-  }]
 
   const onDoubleClick = (event) => {
     openDateModal();
