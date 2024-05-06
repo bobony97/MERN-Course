@@ -24,8 +24,12 @@ export const calendarSlice = createSlice({
     reducers: {
         onSelectActiveEvent: (state, { payload }) => {
             state.activeEvent = payload
+        },
+        onAddNewEvent: (state, {payload}) => {
+            state.events.push(payload);
+            state.activeEvent = null;
         }
     }
 });
 
-export const { onSelectActiveEvent } = calendarSlice.actions
+export const { onSelectActiveEvent, onAddNewEvent } = calendarSlice.actions
