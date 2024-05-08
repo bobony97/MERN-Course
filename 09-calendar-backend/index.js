@@ -14,8 +14,18 @@ const app = express();
     express.static(): es un middleware incorporado en Express.js que se utiliza para servir archivos estáticos. Recibe como argumento el nombre del directorio desde el cual se servirán 
     los archivos estáticos. En este caso, 'public' es el directorio especificado.
 */
-
 app.use( express.static('public') );
+
+//Lectura y parseo del body
+/*
+    app.use(express.json()) es un middleware incorporado en Express.js que se utiliza para analizar el cuerpo de las solicitudes entrantes con formato JSON.
+    app.post('/api/login', (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+});
+
+*/
+app.use( express.json());
 
 //Rutas
 //Middleware
