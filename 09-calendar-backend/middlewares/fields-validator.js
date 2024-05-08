@@ -15,6 +15,10 @@ const fieldsValidator = (req, res = response, next) => {
         })
     }
 
+    /*
+        next() Es una función que se utiliza para pasar el control al siguiente middleware en la cadena de middleware o a la ruta siguiente en el flujo de ejecución de la solicitud. 
+        Es esencialmente una forma de decirle a Express que continúe con el siguiente paso después de que se haya completado el trabajo actual en el middleware actual.
+    */
     next();
 }
 

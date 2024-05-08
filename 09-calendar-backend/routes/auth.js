@@ -12,7 +12,7 @@ const { fieldsValidator } = require('../middlewares/fields-validator');
 */
 const { check } = require('express-validator');
 
-const { createUser, loginUser, revalidatedToken } = require('../controllers/auth')
+const { createUser, loginUser, revalidatedToken } = require('../controllers/auth');
 
 //Rutas
 router.post(
