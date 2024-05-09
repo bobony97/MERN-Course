@@ -1,11 +1,12 @@
 const { json } = require('express');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
+const { generateJWT }= require('../helpers/jwt');
 
 const createUser = async(req, res) => {
 
     //req.body: Es la información enviada por el cliente y se obtiene con el middleware "app.use( express.json());" que esta en el index.js
-    const { email, pas } = req.body;
+    const { email, password } = req.body;
 
     try {
         let user = await User.findOne({ email }); //Busca en la colección "User" un email que coincida con la información enviada por el cliente para validar su existencia
@@ -22,17 +23,22 @@ const createUser = async(req, res) => {
         user.password = bcrypt.hashSync( password, salt );
 
         await user.save();
+
+        //Generar jwt
+        const token = await generateJWT( user.id, user.name );
     
         res.status(201).json({
             ok: true,
             uid: user.id,
-            name: user.name
+            name: user.name,
+            token
         })
     } catch (error) {
         res.status(500).json({
             ok: false,
             msg: 'Por favor hable con el administrador',
         })
+        console.log(error)
     }
 }
 
@@ -60,10 +66,14 @@ const loginUser = async(req, res) => {
             })
         }
 
+         //Generar jwt
+         const token = await generateJWT( user.id, user.name );
+
         res.status(200).json({
             ok: true,
             uid: user.id,
-            name: user.name
+            name: user.name,
+            token
         })
         
     } catch (error) {
