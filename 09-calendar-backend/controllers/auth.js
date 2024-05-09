@@ -1,3 +1,4 @@
+const { json } = require('express');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 
@@ -6,7 +7,6 @@ const createUser = async(req, res) => {
     //req.body: Es la información enviada por el cliente y se obtiene con el middleware "app.use( express.json());" que esta en el index.js
     const { email, pas } = req.body;
 
-    
     try {
         let user = await User.findOne({ email }); //Busca en la colección "User" un email que coincida con la información enviada por el cliente para validar su existencia
         if( user ) {
@@ -36,15 +36,42 @@ const createUser = async(req, res) => {
     }
 }
 
-const loginUser = (req, res) => {
+
+const loginUser = async(req, res) => {
     const { email, password } = req.body;
 
-    res.status(200).json({
-        ok: true,
-        msg: 'login',
-        email,
-        password
-    })
+    try {
+        const user = await User.findOne({ email });
+
+       if( !user ) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'No existe un usuario con ese email'
+            })
+        }
+
+        //Validar las passwords
+        const validPassword = bcrypt.compareSync( password, user.password );
+
+        if( !validPassword ) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'Contraseña Incorrecta'
+            })
+        }
+
+        res.status(200).json({
+            ok: true,
+            uid: user.id,
+            name: user.name
+        })
+        
+    } catch (error) {
+        res.status(500).json({
+            ok: false,
+            msg: 'Por favor hable con el administrador',
+        })
+    }
 }
 
 const revalidatedToken = (req, res) => {
