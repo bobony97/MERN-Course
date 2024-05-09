@@ -1,20 +1,25 @@
 const User = require('../models/User');
+const bcrypt = require('bcryptjs');
 
 const createUser = async(req, res) => {
 
     //req.body: Es la información enviada por el cliente y se obtiene con el middleware "app.use( express.json());" que esta en el index.js
-    const { email } = req.body;
+    const { email, pas } = req.body;
 
     
     try {
         let user = await User.findOne({ email }); //Busca en la colección "User" un email que coincida con la información enviada por el cliente para validar su existencia
         if( user ) {
-            res.status(400).json({
+            return res.status(400).json({
                 ok: false,
                 msg: 'Un usuario ya existe con ese correo'
             })
         }
         user = new User( req.body );
+
+        //Encriptar Contraseña
+        const salt = bcrypt.genSaltSync();
+        user.password = bcrypt.hashSync( password, salt );
 
         await user.save();
     
@@ -26,7 +31,7 @@ const createUser = async(req, res) => {
     } catch (error) {
         res.status(500).json({
             ok: false,
-            msg: 'Por favor hable con el administrador'
+            msg: 'Por favor hable con el administrador',
         })
     }
 }
