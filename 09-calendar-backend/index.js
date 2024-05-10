@@ -1,7 +1,7 @@
 const express = require('express');
 require('dotenv').config(); //"dotenv" permite el uso de las variables de entorno del archivo .env y ".config()" se le esta indicando que cargue las variables de entorno definidas en ".env"
 const {dbConnection} = require('./database/config');
-const cors = require('cors')
+const cors = require('cors');
 
 //Crear el servidor express
 const app = express();
@@ -45,6 +45,7 @@ app.use( express.json());
     las rutas específicas para la autenticación de usuarios.
 */
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/events', require('./routes/events'));
 
 /*
     req: Es el objeto de solicitud (request). Contiene información sobre la solicitud HTTP que el cliente (navegador, otra aplicación, etc.) envía al servidor. 
