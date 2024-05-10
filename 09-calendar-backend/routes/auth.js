@@ -13,6 +13,7 @@ const { fieldsValidator } = require('../middlewares/fields-validator');
 const { check } = require('express-validator');
 
 const { createUser, loginUser, revalidatedToken } = require('../controllers/auth');
+const { validateJWT } = require('../middlewares/validateJWT');
 
 //Rutas
 router.post(
@@ -36,9 +37,6 @@ router.post(
     loginUser
 )
 
-router.get(
-    '/renew',
-    revalidatedToken
-)
+router.get('/renew', validateJWT, revalidatedToken);
 
 module.exports = router
