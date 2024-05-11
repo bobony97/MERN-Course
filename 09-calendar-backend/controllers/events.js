@@ -1,4 +1,5 @@
 const { response } = require('express');
+const Evento = require('../models/Event');
 
 
 const getEvents = (req, res = response) => {
@@ -10,14 +11,26 @@ const getEvents = (req, res = response) => {
     })
 }
 
-const createEvent = (req, res = response) => {
+const createEvent = async(req, res = response) => {
 
-    console.log(req.body);
+    const evento = new Evento( req.body );
 
-    return res.status(201).json({
-        ok: true,
-        msg: 'Crear Evento'
-    })
+    try {
+        evento.user = req.uid; //Le asignamos a la propiedad "user" de la colección "Event" el id del usuario de la colección "User" para establecer la relación
+        const eventSaved = await evento.save();
+
+        return res.status(201).json({
+            ok: true,
+            eventSaved
+        })
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            ok: false,
+            msg: 'Contacte con el administrador'
+        })
+    }
 }
 
 const updateEvent = (req, res = response) => {
