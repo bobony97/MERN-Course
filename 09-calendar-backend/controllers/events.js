@@ -23,7 +23,7 @@ const createEvent = async(req, res = response) => {
     const event = new Event( req.body );
 
     try {
-        evento.user = req.uid; //Le asignamos a la propiedad "user" de la colección "Event" el id del usuario de la colección "User" para establecer la relación
+        event.user = req.uid; //Le asignamos a la propiedad "user" de la colección "Event" el id del usuario de la colección "User" para establecer la relación
         const eventSaved = await event.save();
 
         return res.status(201).json({
@@ -77,20 +77,48 @@ const updateEvent = async(req, res = response) => {
         })
 
     } catch (error) {
-        console.log(error)
         res.status(500).json({
             ok: false,
             msg: "Hable con el administrador"
         })
     }
 }
-const deleteEvent = (req, res = response) => {
 
+const deleteEvent = async(req, res = response) => {
 
-    return res.status(201).json({
-        ok: true,
-        msg: 'Borrando Eventos'
-    })
+    const eventId = req.params.id;
+    const uid = req.uid;
+
+    try {
+        const event = await Event.findById( eventId );
+
+        if( !event ) {
+            return res.status(404).json({
+                ok: false,
+                msg: 'La id enviada no es valida'
+            })
+        }
+
+        if( event.user.toString() !== uid ) {
+            return res.status(401).json({
+                ok: false,
+                msg: 'No tiene autorización para eliminar el evento'
+            })
+        }
+
+        await Event.findByIdAndDelete( eventId );
+
+        return res.status(200).json({
+            ok: true
+        })
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            ok: false,
+            msg: "Hable con el administrador"
+        })
+    }
 }
 
 module.exports = {
