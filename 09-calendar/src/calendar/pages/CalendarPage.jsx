@@ -65,7 +65,7 @@ export const CalendarPage = () => {
 
   useEffect(() => {
     startLoadingEvents();
-  },[])
+  },[startLoadingEvents])
   
 
   return (
