@@ -31,7 +31,6 @@ export const useCalendarStore = () => {
                 user
             }))
         } catch (error) {
-            console.log(error)
             Swal.fire('Erro al guardar', error.response.data?.msg, 'error');
         }
     }
